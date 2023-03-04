@@ -68,22 +68,34 @@ function recorrerListadoYRenderizarTarjetas() {
 
   listado.forEach(materia=>{
 
-      const caja=document.createElement("article")
-      const imagen=document.createElement("img");
-      const lenguajes=document.createElement("p");
-      const bimestre=document.createElement("p");
+      // const caja=document.createElement("article")
+      // const imagen=document.createElement("img");
+      // const lenguajes=document.createElement("p");
+      // const bimestre=document.createElement("p");
 
-      lenguajes.innerText=materia.lenguajes;
-      bimestre.innerText=materia.bimestre;
-      imagen.setAttribute("src",materia.imgUrl);
-      imagen.setAttribute("alt","materia");
+      // lenguajes.innerText=materia.lenguajes;
+      // bimestre.innerText=materia.bimestre;
+      // imagen.setAttribute("src",materia.imgUrl);
+      // imagen.setAttribute("alt","materia");
       
-      caja.appendChild(imagen);
-      caja.appendChild(lenguajes);
-      caja.appendChild(bimestre);
-      caja.classList.add("caja");
-      fila.appendChild(caja);   
+      // caja.appendChild(imagen);
+      // caja.appendChild(lenguajes);
+      // caja.appendChild(bimestre);
+      // caja.classList.add("caja");
+      // fila.appendChild(caja);   
 
+      const ficha = document.getElementById("fila")
+ ficha.innerHTML = ""
+    listado.forEach((materia) => {
+        ficha.innerHTML += `
+        <div class="caja"> 
+          <img src="${materia.imgUrl}" alt="${materia.lenguajes}">
+          <p class="lenguajes"> Lenguajes: ${materia.lenguajes}</p>
+          <p class="bimestre"> Bimestre: ${materia.bimestre}</p>
+        </div>
+    `
+    }) 
+   
   }
   
   )
@@ -105,14 +117,15 @@ function alternarColorTema() {
 
 /* --------------------- PUNTO 5: Escribe tu codigo aqui --------------------- */
 
-document.addEventListener("keydown",function (event){
-    if(event.key=="F"||event.key=="f"){
-      let sobremi=document.getElementById("#sobre-mi");
-      
-      sobremi.classList.remove("#sobre-mi");
-    }
+ document.addEventListener("keydown", function (e){
+ 
+ 
+     if(e.key=="F"||e.key=="f"){
+     let  sobremi=document.getElementById("sobre-mi");
+     sobremi.classList.remove("oculto");
+     }
 
-})
+ })
 
 
 renderizarDatosUsuario();
